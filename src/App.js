@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import AddStudent from './components/AddStudent/AddStudent';
+import AllStudent from './components/AllStudent/AllStudent';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         </Route>
         <Route exact path="/add-student">
           <AddStudent />
+        </Route>
+        <Route exact path="/all-student">
+          <AllStudent />
         </Route>
       </Switch>
     </Router>
