@@ -1,11 +1,23 @@
 import React from 'react';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import AddStudent from './components/AddStudent/AddStudent';
 
 function App() {
   return (
-    <div>
-      <h2>This is a new react application</h2>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <AddStudent />
+        </Route>
+        <Route exact path="/add-student">
+          <AddStudent />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
