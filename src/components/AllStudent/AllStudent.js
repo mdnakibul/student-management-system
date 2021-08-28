@@ -5,13 +5,22 @@ import React, { useState } from 'react'
 import Sidebar from '../Sidebar/Sidebar';
 
 const AllStudent = () => {
+
+    // Delete A Student 
+
     const deleteStudent = (studentId) => {
         console.log('Student Delete Request Received', studentId);
+        axios.delete(`http://localhost:5000/deleteStudent/${studentId}`)
+            .then(res => {
+                console.log(res.data);
+            })
     };
     const editStudent = (studentId) => {
         console.log('Edit Student Request Received', studentId);
     }
-    const [students, setStudents] = useState([])
+
+    // Get student list 
+    const [students, setStudents] = useState([]);
 
     axios.get('http://localhost:5000/students')
         .then((res) => {
