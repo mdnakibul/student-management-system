@@ -1,16 +1,25 @@
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react'
 import Sidebar from '../Sidebar/Sidebar';
 
 const AllStudent = () => {
-    const studentId = 111111;
     const deleteStudent = (studentId) => {
-        console.log('Student Delete Request Received',studentId);
+        console.log('Student Delete Request Received', studentId);
     };
     const editStudent = (studentId) => {
-        console.log('Edit Student Request Received',studentId);
+        console.log('Edit Student Request Received', studentId);
     }
+    const [students, setStudents] = useState([])
+
+    axios.get('http://localhost:5000/students')
+        .then((res) => {
+            setStudents(res.data);
+            console.log(students);
+
+        })
+
     return (
         <div className="container-fluid">
             <div className="row">
@@ -30,30 +39,22 @@ const AllStudent = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>1310432342</td>
-                                <td>@1182313</td>
-                                <td className="bg-success text-white" role="button" onClick={() => editStudent(studentId)}> <FontAwesomeIcon icon={faEdit} /> Edit</td>
-                                <td className="bg-danger text-white" role="button" onClick={() => deleteStudent(studentId)}> <FontAwesomeIcon icon={faTrash} /> Delete</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Mark</td>
-                                <td>1310432342</td>
-                                <td>@1182313</td>
-                                <td className="bg-success text-white" role="button" onClick={() => editStudent(studentId)}> <FontAwesomeIcon icon={faEdit} /> Edit</td>
-                                <td className="bg-danger text-white" role="button" onClick={() => deleteStudent(studentId)}> <FontAwesomeIcon icon={faTrash} /> Delete</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Mark</td>
-                                <td>1310432342</td>
-                                <td>@1182313</td>
-                                <td className="bg-success text-white" role="button" onClick={() => editStudent(studentId)}> <FontAwesomeIcon icon={faEdit} /> Edit</td>
-                                <td className="bg-danger text-white" role="button" onClick={() => deleteStudent(studentId)}> <FontAwesomeIcon icon={faTrash} /> Delete</td>
-                            </tr>
+                            {
+                                students.map((student) => {
+                                    return (
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>{student.name}</td>
+                                            <td>{student.registraion}</td>
+                                            <td>@{student.id}</td>
+                                            <td className="bg-success text-white" role="button" onClick={() => editStudent(student._id)}> <FontAwesomeIcon icon={faEdit} /> Edit</td>
+                                            <td className="bg-danger text-white" role="button" onClick={() => deleteStudent(student._id)}> <FontAwesomeIcon icon={faTrash} /> Delete</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+
+
                         </tbody>
                     </table>
                 </div>
