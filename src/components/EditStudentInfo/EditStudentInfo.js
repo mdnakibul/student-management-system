@@ -18,7 +18,7 @@ const EditStudentInfo = () => {
                 setSingleStudent(res.data)
                 console.log(res);
             })
-    }, []);
+    }, [studentId]);
 
     const handleImageChange = (event) => {
         console.log('image uploading');
