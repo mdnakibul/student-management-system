@@ -2,6 +2,7 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
 
@@ -72,6 +73,14 @@ const AllStudent = () => {
         })
     }
 
+    // Search For Student 
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        console.log(data);
+        console.log()
+    };
+
     return (
         <div className="container-fluid">
             <div className="row">
@@ -81,6 +90,15 @@ const AllStudent = () => {
                 <div className="col-md-10">
                     <h2 className="text-center py-5">All Student List</h2>
                     <div>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+
+                            {/* include validation with required or other standard HTML validation rules */}
+                            <input {...register("searchData", { required: true })} />
+                            {/* errors will return when field validation fails  */}
+                            {errors.searchData && <span>This field is required</span>}
+
+                            <input type="submit" value="Search"/>
+                        </form>
                         <select name="sort" className="float-end me-3" id="sort" onChange={sortStudentData}>
                             <option value="null">Sort</option>
                             <option value="name">Name</option>
