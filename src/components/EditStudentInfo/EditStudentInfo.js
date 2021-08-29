@@ -13,7 +13,7 @@ const EditStudentInfo = () => {
     // Get Single Student Details 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/student/${studentId}`)
+        axios.get(`https://fathomless-sea-23138.herokuapp.com/student/${studentId}`)
             .then(res => {
                 setSingleStudent(res.data)
                 console.log(res);
@@ -46,7 +46,7 @@ const EditStudentInfo = () => {
             data.photo = imageURL;
         });
         console.log('Data update in progress')
-        axios.patch(`http://localhost:5000/update-student/${singleStudent._id}`,data)
+        axios.patch(`https://fathomless-sea-23138.herokuapp.com/update-student/${singleStudent._id}`,data)
         .then(res => {
             console.log(res);
             if(res){

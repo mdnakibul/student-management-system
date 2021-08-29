@@ -31,7 +31,7 @@ const AddStudent = () => {
         data.photo = imgURL;
         console.log('data',data);
         
-        fetch('http://localhost:5000/addStudent',{
+        fetch('https://fathomless-sea-23138.herokuapp.com/addStudent',{
             method: 'POST',
             headers:{
                 'Content-Type' : 'application/json',

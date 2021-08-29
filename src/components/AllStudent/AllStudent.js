@@ -12,7 +12,7 @@ const AllStudent = () => {
     // Delete A Student 
 
     const deleteStudent = (studentId) => {
-        axios.delete(`http://localhost:5000/deleteStudent/${studentId}`)
+        axios.delete(`https://fathomless-sea-23138.herokuapp.com/deleteStudent/${studentId}`)
             .then(res => {
                 console.log(res.data);
                 alert('Student Deleted Successfully');
@@ -30,7 +30,7 @@ const AllStudent = () => {
     const [students, setStudents] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/students')
+        axios.get('https://fathomless-sea-23138.herokuapp.com/students')
             .then((res) => {
                 setStudents(res.data);
                 console.log(res.data);
