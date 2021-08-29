@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import AddStudent from './components/AddStudent/AddStudent';
 import AllStudent from './components/AllStudent/AllStudent';
+import EditStudentInfo from './components/EditStudentInfo/EditStudentInfo';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route exact path="/all-student">
           <AllStudent />
+        </Route>
+        <Route exact path="/edit-student/:studentId">
+          <EditStudentInfo />
         </Route>
       </Switch>
     </Router>
