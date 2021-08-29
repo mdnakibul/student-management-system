@@ -11,7 +11,6 @@ const AllStudent = () => {
     // Delete A Student 
 
     const deleteStudent = (studentId) => {
-        console.log('Student Delete Request Received', studentId);
         axios.delete(`http://localhost:5000/deleteStudent/${studentId}`)
             .then(res => {
                 console.log(res.data);
@@ -63,12 +62,11 @@ const AllStudent = () => {
         students.forEach(student => {
 
             const rowData = `<tr key=${student._id}>
-            <th scope="row">1</th>
             <td>${student.name}</td>
             <td>${student.registration}</td>
             <td>${student.id}</td>
             <td class="bg-success text-white" role="button" onclick='${editStudent}(${student._id})'> <i className="fas fa-edit"></i> Edit</td>
-            <td class="bg-danger text-white" role="button" onclick='${deleteStudent}(${student._id})> <i className="fas fa-trush"></i> Delete</td>
+            <td class="bg-danger text-white" role="button" onclick="${deleteStudent}(${student._id})"> <i className="fas fa-trush"></i> Delete</td>
         </tr>`;
             tableRef.insertRow().innerHTML = rowData;
         })
